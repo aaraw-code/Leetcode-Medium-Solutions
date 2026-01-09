@@ -16,7 +16,7 @@ class Solution:
         return nums
 
 
-# This implementation is based on Implementation Sort.
+# This implementation is based on Insertion Sort.
 # Although it produces correct results, it exceeds the time limit (TLE) on LeetCode 912 
 
 class Solution:
@@ -30,4 +30,23 @@ class Solution:
                 nums[j+1] = nums[j]
                 j-=1
             nums[j+1] = key
+        return nums
+
+# This implementation is based on Selection Sort.
+# Although it produces correct results, it exceeds the time limit (TLE) on LeetCode 912 
+
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+
+        for i in range(n):
+            mn = nums[i]
+            idx = i
+            for j in range(i+1,n):
+                if nums[j]<mn:
+                    mn = nums[j]
+                    idx = j
+            temp = nums[i]
+            nums[i] = nums[idx]
+            nums[idx] = temp
         return nums
