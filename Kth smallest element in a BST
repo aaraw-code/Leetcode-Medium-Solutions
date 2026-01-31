@@ -1,0 +1,21 @@
+# Approach: Inorder traversal of BST gives sorted order; return the k-th (1-indexed) element.
+
+# Time Complexity: O(n), where n is the number of nodes in the BST.
+
+# Space Complexity: O(n) for storing inorder traversal + O(h) recursion stack.
+
+# Edge Cases: Handles k=1, k=n, skewed BST, and empty tree safely.
+
+class Solution:
+    def __init__(self):
+        self.ans = []
+    def inorder(self,root):
+        if root is None:
+            return None
+        self.inorder(root.left)
+        self.ans.append(root.val)
+        self.inorder(root.right)
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        self.ans = []
+        self.inorder(root)
+        return self.ans[k-1]
