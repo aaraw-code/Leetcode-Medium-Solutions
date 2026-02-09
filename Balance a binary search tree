@@ -1,0 +1,25 @@
+class Solution:
+    def __init__(self):
+        self.ans = []
+    def inorder(self,root):
+        if root is None:
+            return 
+        self.inorder(root.left)
+        self.ans.append(root.val)
+        self.inorder(root.right)
+        
+    def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        self.ans = []
+        self.inorder(root)
+        arr = self.ans
+
+        def build(l,r):
+            if l > r:
+                return None
+            mid = (l+r)//2
+            node = TreeNode(arr[mid])
+            node.left = build(l,mid-1)
+            node.right = build(mid+1,r)
+            return node
+
+        return build(0,len(arr)-1)
