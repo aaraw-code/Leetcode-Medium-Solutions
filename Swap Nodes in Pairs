@@ -4,6 +4,7 @@ class Solution:
         dummy.next = head
         prev = dummy
 
+        # Tab tak loop chalega jab tak 2 nodes available hain swap ke liye
         while prev.next and prev.next.next:
             first = prev.next
             second = prev.next.next
