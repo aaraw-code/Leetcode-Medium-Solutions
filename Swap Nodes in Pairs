@@ -1,0 +1,23 @@
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        dummy.next = head
+        prev = dummy
+
+        while prev.next and prev.next.next:
+            first = prev.next
+            second = prev.next.next
+
+            # Swapping start
+            first.next = second.next
+
+            # second ko firse jod denge
+            second.next = first
+
+            # prev ko second se jod denge
+            prev.next = second
+            
+            # prev ko aage badhao (first pe le jao)
+            # taaki next pair handle kar sake
+            prev = first
+        return dummy.next
