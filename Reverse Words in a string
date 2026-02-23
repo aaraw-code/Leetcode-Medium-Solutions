@@ -1,0 +1,46 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+
+        # Step 1: Remove extra spaces manually
+        chars = []
+        n = len(s)
+        i = 0
+        while i < n:
+            if s[i] != " ":
+                chars.append(s[i])
+            else:
+                # add single space if last char in chars is not space
+                if chars and chars[-1] != " ":
+                    chars.append(" ")
+            i += 1
+
+        # Remove trailing space if any
+        if chars and chars[-1] == " ":
+            chars.pop()
+
+        # Step 2: Reverse the whole list using two pointers
+        i, j = 0, len(chars) - 1
+        while i < j:
+            chars[i], chars[j] = chars[j], chars[i]
+            i += 1
+            j -= 1
+
+        # Step 3: Reverse each word individually
+        start = 0
+        n = len(chars)
+        for end in range(n + 1):
+            if end == n or chars[end] == " ":
+                # reverse chars[start:end-1]
+                i, j = start, end - 1
+                while i < j:
+                    chars[i], chars[j] = chars[j], chars[i]
+                    i += 1
+                    j -= 1
+                start = end + 1
+
+        # Step 4: Convert list back to string manually
+        result = ""
+        for c in chars:
+            result += c
+
+        return result
