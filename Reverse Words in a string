@@ -25,7 +25,7 @@ class Solution:
             i += 1
             j -= 1
 
-        # Step 3: Reverse each word individually
+       # Step 3: Reverse each word individually
         start = 0
         n = len(chars)
         for end in range(n + 1):
@@ -40,6 +40,10 @@ class Solution:
 
         # Step 4: Convert list back to string manually
         result = ""
+        for c in chars:
+            result += c
+
+        return result
         for c in chars:
             result += c
 
