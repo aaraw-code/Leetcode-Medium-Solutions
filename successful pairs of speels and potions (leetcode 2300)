@@ -1,0 +1,17 @@
+# This brute-force solution is logically correct, but it gives TLE on LeetCode due to O(n * m) time complexity.
+
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        
+        ans = []
+
+        for i in spells:
+            length = 0
+            for j in range(len(potions)):
+                mid = i * potions[j]
+                if mid >= success:
+                    length += 1
+        
+            ans.append(length)
+        
+        return ans
